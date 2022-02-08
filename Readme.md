@@ -14,6 +14,12 @@ kubectl logs -n ingress-nginx -f ingress-nginx-controller-54d8b558d4-7w87n
 
 ## Deploy and delete pods frontend, keycloak and example service
 
+Replace all the variables with {} on the files:  
+
+* oauth2-proxy.yaml
+* keycloak.yaml
+
+
 ```bash
 kubectl delete -f frontend.yaml
 kubectl delete -f keycloak.yaml
