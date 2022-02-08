@@ -38,11 +38,29 @@ python -c 'import os,base64; print(base64.b64encode(os.urandom(16)).decode("asci
 kubectl delete -f nginx_ingress_services.yaml
 kubectl delete -f oauth2-ingress.yaml
 kubectl delete -f oauth2-proxy.yaml
+kubectl delete -f nginx_ingress_keycloack.yaml
 
+kubectl apply -f nginx_ingress_keycloack.yaml
 kubectl apply -f oauth2-proxy.yaml
 kubectl apply -f oauth2-ingress.yaml
 kubectl apply -f nginx_ingress_services.yaml
 ```  
+
+## Keycloak Configuration  
+
+[Documentation](https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/oauth_provider#keycloak-oidc-auth-provider)
+
+Create a mapper with Mapper Type 'Group Membership' and Token Claim Name 'groups'
+
+![Audience](/assets/GroupMembership.png)
+
+Create a mapper with Mapper Type 'Audience' and Included Client Audience and Included Custom Audience set to your client name.
+
+![Audience](/assets/Audience.png)
+
+Config client on Keycloak
+
+![Audience](/assets/ClientID.png)
 
 ## Getting token from Ketcloak  
 
@@ -67,4 +85,4 @@ http://{ExposedIP}/v1/service/microservicio/ping
 ## Contributors  
 
 Javier Rodrí­guez  
-[hazelapd@gmail.com]  
+[hazelapd@gmail.com]
